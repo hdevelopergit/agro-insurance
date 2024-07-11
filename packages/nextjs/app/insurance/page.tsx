@@ -1,12 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import { NextPage } from "next";
 import { parseEther } from "viem";
 import { InputBase } from "~~/components/scaffold-eth";
 import { useScaffoldReadContract, useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
 
-export const Insurance = ({ }: { address?: string }) => {
-
+const Insurance: NextPage = () => {
   // Contract Write Action
   const { writeContractAsync: writeInsuranceAsync } = useScaffoldWriteContract("Insurance");
 
@@ -14,7 +14,7 @@ export const Insurance = ({ }: { address?: string }) => {
   const { data: unixDate } = useScaffoldReadContract({
     contractName: "Insurance",
     functionName: "getCurrentDate",
-    watch: true
+    watch: true,
   });
 
   const region = [
@@ -22,28 +22,66 @@ export const Insurance = ({ }: { address?: string }) => {
     ["region2", "USA", 0, "April-November"],
     ["region3", "China", 0, "May-November"],
     ["region4", "EU", 0, "April-October"],
-    ["region5", "Canada", 0, "May-October"]
+    ["region5", "Canada", 0, "May-October"],
   ];
 
-  for (var i = 0; i < 5; i++) {
-    const { data: rainRegion } = useScaffoldReadContract({
-      contractName: "Insurance",
-      functionName: "getMm",
-      args: [String(region[i][0])],
-    });
-    region[i][2] = Number(rainRegion);
-  }
+  //I've commented out because didn't pass eslint
+  // for (var i = 0; i < 5; i++) {
+  //   const { data: rainRegion } = useScaffoldReadContract({
+  //     contractName: "Insurance",
+  //     functionName: "getMm",
+  //     args: [String(region[i][0])],
+  //   });
+  //   region[i][2] = Number(rainRegion);
+  // }
 
-  // functions for list box  
+  const { data: rainRegion } = useScaffoldReadContract({
+    contractName: "Insurance",
+    functionName: "getMm",
+    args: [String(region[0][0])],
+  });
+  region[0][2] = Number(rainRegion);
+
+  const { data: rainRegion2 } = useScaffoldReadContract({
+    contractName: "Insurance",
+    functionName: "getMm",
+    args: [String(region[1][0])],
+  });
+  region[1][2] = Number(rainRegion2);
+
+  const { data: rainRegion3 } = useScaffoldReadContract({
+    contractName: "Insurance",
+    functionName: "getMm",
+    args: [String(region[2][0])],
+  });
+  region[2][2] = Number(rainRegion3);
+
+  const { data: rainRegion4 } = useScaffoldReadContract({
+    contractName: "Insurance",
+    functionName: "getMm",
+    args: [String(region[3][0])],
+  });
+  region[3][2] = Number(rainRegion4);
+
+  const { data: rainRegion5 } = useScaffoldReadContract({
+    contractName: "Insurance",
+    functionName: "getMm",
+    args: [String(region[4][0])],
+  });
+  region[4][2] = Number(rainRegion5);
+
+  // functions for list box
   const [location, setLocation] = useState("region1");
   const [locationRain, setLocationRain] = useState("region1");
   const [rain, setRain] = useState(BigInt(0));
 
   // Build "current" date. Can be real or changed for testing purposes.
-  var unixDateTmp = Number(unixDate) * 1000;
+  const unixDateTmp = Number(unixDate) * 1000;
   const date = new Date(Number(unixDateTmp));
-  const day = String((date.getDate() < 10) ? ("0" + date.getDate()) : date.getDate());
-  const month = String((Number(date.getMonth() + 1) < 10) ? ("0" + Number(date.getMonth() + 1)) : Number(date.getMonth() + 1));
+  const day = String(date.getDate() < 10 ? "0" + date.getDate() : date.getDate());
+  const month = String(
+    Number(date.getMonth() + 1) < 10 ? "0" + Number(date.getMonth() + 1) : Number(date.getMonth() + 1),
+  );
   const year = String(date.getFullYear());
   const formattedDate = day + "-" + month + "-" + year + " (dd-mm-yyyy)";
 
@@ -70,17 +108,19 @@ export const Insurance = ({ }: { address?: string }) => {
                     onChange={e => setLocation(e.target.value)}
                   >
                     {region.map(([id, name]) => (
-                      <option value={id}>{name}</option>
+                      <option key={id} value={id}>
+                        {name}
+                      </option>
                     ))}
                   </select>
                 </div>
                 <div className="pl-6">
                   {region
-                    .filter(([id]) => (
-                      id == location
-                    ))
-                    .map(([id, name, rain, campaign, from, to]) => (
-                      <span><b>Campaign:</b> {campaign} {year}</span>
+                    .filter(([id]) => id == location)
+                    .map(([id, , , campaign]) => (
+                      <span key={id}>
+                        <b>Campaign:</b> {campaign} {year}
+                      </span>
                     ))}
                 </div>
               </div>
@@ -138,14 +178,14 @@ export const Insurance = ({ }: { address?: string }) => {
                     onChange={e => setLocationRain(e.target.value)}
                   >
                     {region.map(([id, name]) => (
-                      <option value={id}>{name}</option>
+                      <option key={id} value={id}>
+                        {name}
+                      </option>
                     ))}
                   </select>
                 </div>
                 <div className="w-20 pl-2">
-                  <InputBase value={rain}
-                    onChange={e => setRain(e)}
-                  />
+                  <InputBase value={rain} onChange={e => setRain(e)} />
                 </div>
               </div>
             </div>
@@ -170,31 +210,26 @@ export const Insurance = ({ }: { address?: string }) => {
               <table className="table table-zebra w-full">
                 <thead>
                   <tr>
-                    <th className="bg-primary text-lg">Region  </th>
+                    <th className="bg-primary text-lg">Region </th>
                     <th className="bg-primary text-lg">Rain(mm)</th>
                   </tr>
                 </thead>
                 <tbody>
                   {region.map(([id, name, rainTable]) => (
                     <tr key={id}>
-                      <td className="text-left text-lg">
-                        {name}
-                      </td>
-                      <td className="text-right text-lg">
-                        {rainTable}
-                      </td>
+                      <td className="text-left text-lg">{name}</td>
+                      <td className="text-right text-lg">{rainTable}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
-          </div> {/*flex items-center */}
+          </div>{" "}
+          {/*flex items-center */}
         </div>
-      </div >
+      </div>
     </>
   );
 };
 
 export default Insurance;
-
-
