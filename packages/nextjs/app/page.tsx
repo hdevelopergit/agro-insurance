@@ -1,66 +1,44 @@
 "use client";
 
-import Link from "next/link";
+import Image from "next/image";
 import type { NextPage } from "next";
-import { useAccount } from "wagmi";
-import { BugAntIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
-import { Address } from "~~/components/scaffold-eth";
 
 const Home: NextPage = () => {
-  const { address: connectedAddress } = useAccount();
-
   return (
     <>
       <div className="flex items-center flex-col flex-grow pt-10">
         <div className="px-5">
           <h1 className="text-center">
             <span className="block text-2xl mb-2">Welcome to</span>
-            <span className="block text-4xl font-bold">Scaffold-ETH 2</span>
+            <span className="block text-4xl font-bold">Agro-Insurance</span>
           </h1>
-          <div className="flex justify-center items-center space-x-2 flex-col sm:flex-row">
-            <p className="my-2 font-medium">Connected Address:</p>
-            <Address address={connectedAddress} />
+          <div className="flex items-center flex-col flex-grow my-10">
+            <Image src="/farm.png" width="727" height="231" alt="farm" className="rounded-xl border-4 border-primary" />
           </div>
-          <p className="text-center text-lg">
-            Get started by editing{" "}
-            <code className="italic bg-base-300 text-base font-bold max-w-full break-words break-all inline-block">
-              packages/nextjs/app/page.tsx
-            </code>
-          </p>
-          <p className="text-center text-lg">
-            Edit your smart contract{" "}
-            <code className="italic bg-base-300 text-base font-bold max-w-full break-words break-all inline-block">
-              YourContract.sol
-            </code>{" "}
-            in{" "}
-            <code className="italic bg-base-300 text-base font-bold max-w-full break-words break-all inline-block">
-              packages/hardhat/contracts
-            </code>
-          </p>
-        </div>
-
-        <div className="flex-grow bg-base-300 w-full mt-16 px-8 py-12">
-          <div className="flex justify-center items-center gap-12 flex-col sm:flex-row">
-            <div className="flex flex-col bg-base-100 px-10 py-10 text-center items-center max-w-xs rounded-3xl">
-              <BugAntIcon className="h-8 w-8 fill-secondary" />
-              <p>
-                Tinker with your smart contract using the{" "}
-                <Link href="/debug" passHref className="link">
-                  Debug Contracts
-                </Link>{" "}
-                tab.
-              </p>
-            </div>
-            <div className="flex flex-col bg-base-100 px-10 py-10 text-center items-center max-w-xs rounded-3xl">
-              <MagnifyingGlassIcon className="h-8 w-8 fill-secondary" />
-              <p>
-                Explore your local transactions with the{" "}
-                <Link href="/blockexplorer" passHref className="link">
-                  Block Explorer
-                </Link>{" "}
-                tab.
-              </p>
-            </div>
+          {/* <div className="mx-96 px-40"> */}
+          <div className="max-w-3xl">
+            <p className="text-center text-lg">
+              <b className="text-xl">Agro-Insurance</b> is an app where you can insure your soyabeans against the wether
+              conditions. During the campaign of soyabeans it is expected to rain between <b>500</b> and <b>800</b> mm
+              of water. If this condition is not fulfilled, you can collect 10x the fee you paid.
+            </p>
+            <p className="text-left text-lg mx-10">
+              <span className="block text-xl mb-2 font-bold">The steps are:</span>
+              🔅 Select the region where you produce your soyabeans
+              <br />
+              🔅 Pay the Fee
+              <br />
+              🔅 When the campaign for your region ends, and if the rain was bad you can collect the insurance.
+              <br />
+            </p>
+            <p className="text-left text-lg">
+              <span className="block mb-2 font-bold">Important note:</span>
+              🔅 You can see the mm of rain fallen in the contract&apos;s owner section.
+              <br />
+              🔅 To avoid wait the dates and get bored :P, there is a &quot;testing&quot; function (called
+              setCurrentDate) which you can use to change the date and play accordingly. <br />
+              🔅 You have to pass the date in unix format and this is only for testing purposes.
+            </p>
           </div>
         </div>
       </div>
