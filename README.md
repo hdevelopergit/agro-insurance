@@ -1,5 +1,4 @@
-# 
-🔅 Agro-Insurance
+#🔅 Agro-Insurance
 Insurance app that work in ethereum
 
 ## Requirements
