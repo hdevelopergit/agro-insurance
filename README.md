@@ -16,8 +16,8 @@ To get started with Agro-Insurance, follow the steps below:
 1. Clone this repo & install dependencies
 
 ```
-git clone https://github.com/scaffold-eth/scaffold-eth-2.git
-cd scaffold-eth-2
+git clone https://github.com/hdevelopergit/agro-insurance.git agro-insurance
+cd agro-insurance
 yarn install
 ```
 
