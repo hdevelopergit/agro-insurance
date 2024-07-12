@@ -1,6 +1,6 @@
 # 🔅 Agro-Insurance
 
-This is an open-source web3 Insurance app built on 🏗 Scaffold-ETH 2.
+This is an open-source, web3 Insurance app built on 🏗 Scaffold-ETH 2.
 Agro-Insurance is an app where you can insure your soyabeans against the wether conditions. During the campaign of soyabeans it is expected to rain between 500 and 800 mm of water. If this condition is not fulfilled, you can collect 10x the fee you paid.
 
 The steps are:<br/>
