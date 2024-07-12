@@ -1,5 +1,17 @@
 # 🔅 Agro-Insurance
-Insurance app that work in ethereum
+
+This is an open-source web3 Insurance app built on 🏗 Scaffold-ETH 2.
+Agro-Insurance is an app where you can insure your soyabeans against the wether conditions. During the campaign of soyabeans it is expected to rain between 500 and 800 mm of water. If this condition is not fulfilled, you can collect 10x the fee you paid.
+
+The steps are:<br/>
+• Select the region where you produce your soyabeans
+• Pay the Fee
+• When the campaign for your region ends, and if the rain was bad you can collect the insurance.
+
+Important note:
+• You can see the mm of rain fallen in the contract's owner section.
+• To avoid wait the dates and get bored :P, there is a "testing" function (called setCurrentDate) which you can use to change the date and play accordingly.
+• You have to pass the date in unix format and this is only for testing purposes.
 
 ## Requirements
 
