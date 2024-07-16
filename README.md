@@ -3,14 +3,14 @@
 This is an open-source, web3 Insurance app built on 🏗 Scaffold-ETH 2. You can insure your soybeans against the wether conditions. During the campaign of soybeans it is expected to rain between 500 and 800 mm of water. If this condition is not fulfilled, you can collect 10x the fee you paid.
 
 **The steps are:**  
-• Select the region where you produce your soyabeans<br/>
-• Pay the Fee<br/>
-• When the campaign for your region ends, and if the rain was bad you can collect the insurance.<br/>
+• Select the region where you produce your soyabeans  
+• Pay the Fee  
+• When the campaign for your region ends, and if the rain was bad you can collect the insurance.  
 
-<b>Important note:</b><br/>
-• You can see the mm of rain fallen in the contract's owner section.<br/>
-• To avoid wait the dates and get bored :P, there is a "testing" function (called setCurrentDate) which you can use to change the date and play accordingly.<br/>
-• You have to pass the date in unix format and this is only for testing purposes.<br/>
+**Important note:**  
+• You can see the mm of rain fallen in the contract's owner section.  
+• To avoid wait the dates and get bored :P, there is a "testing" function (called setCurrentDate) which you can use to change the date and play accordingly.  
+• You have to pass the date in unix format and this is only for testing purposes.  
 
 ## Requirements
 
