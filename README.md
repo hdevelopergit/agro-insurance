@@ -1,8 +1,8 @@
 # 🔅 Agro-Insurance
 
-Test. This is an open-source, web3 Insurance app built on 🏗 Scaffold-ETH 2. You can insure your soybeans against the wether conditions. During the campaign of soybeans it is expected to rain between 500 and 800 mm of water. If this condition is not fulfilled, you can collect 10x the fee you paid.
+This is an open-source, web3 Insurance app built on 🏗 Scaffold-ETH 2. You can insure your soybeans against the wether conditions. During the campaign of soybeans it is expected to rain between 500 and 800 mm of water. If this condition is not fulfilled, you can collect 10x the fee you paid.
 
-<b>The steps are:</b><br/>
+**The steps are:**<br/>
 • Select the region where you produce your soyabeans<br/>
 • Pay the Fee<br/>
 • When the campaign for your region ends, and if the rain was bad you can collect the insurance.<br/>
